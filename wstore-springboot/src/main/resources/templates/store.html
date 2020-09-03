@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<title>Webstore</title>
+
+
+</head>
+<body>
+		<div class="container">		
+		
+			<div class="row">
+				<div class="dropdown col-2"><br><br>
+				  <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Select category
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+				  
+					<a th:each="categ:${categories}" th:href="@{/store/products(category=${categ}, korpa=${korpa}, total=${total})}">
+					<button class="dropdown-item btn btn-primary" type="button"><p th:text="${categ}" /></button>
+					</a>
+					
+				  </div>
+				</div>
+			 	
+			    <div class="col-8" style="text-align:center;"><br>
+			    	<h1 th:text="${category}" style="color:green;"/>
+			    </div>
+			    <div class="col-1" style="text-align:right;"><br>
+						<a th:href="@{/store/showCart(korpa=${korpa}, total=${total},category=${category})}">
+						<img th:src = "@{'/'+${basketimg}}" alt = "image" id = 'basketimg1' style="width:5vw; height:5vw;"
+						onmouseover="bigImg1(this)" 
+						onmouseout="normImg1(this)"></a>
+				</div>		
+			    <div  class="col-1" style="text-align:center;"><br><b></b>
+			    	<p th:if="${total}!=0" th:text="${'total: ' +total}" style="color:red;" />
+			    </div>
+			    
+						
+			</div >
+			
+		
+		<div class="container" style='display:flex; justify-content:space-around; flex-wrap:wrap; align-items:baseline;'>		
+		<div th:each="tempProd: ${products}" class="artdiv"style=" width:14vw;  margin:1vw;
+																	text-align:center;																	
+         															border-radius: 1vw;
+         															background-color:white;">
+		
+			<a th:href="@{/store/showProduct(productId=${tempProd.id},category=${category},korpa=${korpa},total=${total})}">
+			<img th:src = "${tempProd.pictureUrl}" alt = 'image' style="width:14vw; 
+																		margin:0vw;
+         																border-radius: 1vw 1vw 0vw 0vw;"
+         																onmouseover="bigImg(this)"
+         																onmouseout="normImg(this)"></a>
+			 
+			 <h6 th:text="${tempProd.productName}" style="font-size:1vw;" />
+			 
+			 <h2 th:text="${tempProd.price}" style="font-size:3vw;"/><hr>
+			 
+			 <a th:href = "@{/store/addProductIntoBill(productId=${tempProd.id}, korpa=${korpa},total= ${total},category=${category})}">			 
+			 <input type='image' th:src="@{'/add.png'}" class='addcart' alt = 'dodaj u korpu' style="width:10vw;" /></a>
+        </div>
+		</div>		
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+			<script th:inline="javascript">
+					function bigImg(a){
+						a.style.width="15vw";		
+					}
+					function normImg(a){
+						a.style.width="14vw";
+					}
+					
+					
+					function bigImg1(a){
+						var x = /*[[${total}]]*/
+						if(x>0){
+						a.style.width="6vw";
+						a.style.height="6vw";
+						}
+					}
+					function normImg1(a){
+						a.style.width="5vw";
+						a.style.height="5vw";
+					}
+			</script>	
+		
+</body>
+</html>

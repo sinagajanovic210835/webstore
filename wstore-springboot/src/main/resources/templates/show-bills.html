@@ -1,0 +1,49 @@
+<!--  bills -->
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Bill page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>  
+<div class="container"> 
+    &emsp;<a th:href="@{/manager/customer}" style="font-size:2vw;">Back to customer page</a><hr>
+		
+				<div th:each="bill: ${bills}">
+				
+						<table class="table table-bordered table-striped table-dark">
+							<thead class="thead-light">
+							<tr>
+								<th th:text="${bill.datum}" />
+								<th th:text="${bill.customer.firstName+' '+bill.customer.lastName}" />
+								<th th:text="${'Racun broj: '+bill.id}"/>
+							</tr>
+								<tr>
+									<th th:text="${'phone: '+ bill.customer.phoneNumber}" />
+									<th th:text="${'mail: '+bill.customer.email}" />
+									<th th:text="${bill.customer.homeAdress+', '+bill.customer.homePlace}" />
+								</tr>
+							</thead>
+							<tbody>				
+								<tr th:each="product : ${bill.listProducts}">
+								
+									<td th:text="${product.id}" />
+									<td th:text="${product.productName}" />
+									<td th:text="${product.price}" />							
+								</tr>
+								<tr>
+									<td th:text="${'paid: '+bill.paid}">
+									<td><a th:if="${!bill.paid}" th:href="@{/manager/customer/payBill(billId=${bill.id})}" class="btn btn-danger btn-lg">Naplati racun</a></td>
+									<td th:text="${'total = '+bill.total}" />
+								</tr>
+							</tbody>
+						</table>		
+				<hr>
+							
+				</div>				
+	</div>	
+	
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<title>Save Product</title>
+
+
+</head>
+<body>
+		<div class="container">		
+		
+				<h3>Product managment page</h3><hr>		
+				
+				<form action="#" th:action="@{/manager/save}"
+								 th:object="${product}" method="POST">
+						<input type="hidden" th:field="*{id}">		 
+								 
+						<label>Product name</label>
+						<input type="text" th:field="*{productName}" class="form-control mb-4 col-4" placeholder="Product name">
+				
+						<label>Product category</label>
+						<input type="text" th:field="*{category}" class="form-control mb-4 col-4" placeholder="Category">
+				
+						<label>Picture URL</label>
+						<input type="text" th:field="*{pictureUrl}" class="form-control mb-4 col-4" placeholder="Picture URL adress">
+						
+						<label>Product price</label>
+						<input type="text" th:field="*{price}" class="form-control mb-4 col-4" placeholder="Product price">
+						
+						<label>On stack</label>
+						<input type="text" th:field="*{stack}" class="form-control mb-4 col-4" placeholder="On stack">
+								
+						<button type="submit" class="btn btn-info col-2">Save</button>		
+						
+				</form>
+				<hr>
+				<a th:href="@{/manager/product}">Back to Product list</a>
+		</div>
+</body>
+</html>

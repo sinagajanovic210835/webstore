@@ -1,0 +1,98 @@
+h1      { 
+		color:yellow;
+                text-align: center;
+		
+		}
+h3, h2, h4{color:yellow;
+	   text-align: center; font-size:2vw;
+       }
+ h4    {
+	    font-size:1vw;
+       }
+a       {
+		color:yellow;
+		font-weight: normal;
+		font-size:2vw;
+		}
+nav, 
+article{
+		display: flex;
+		justify-content:space-around;
+		flex-wrap:wrap;
+		}
+header,
+footer  {display: flex;
+		justify-content:space-between;
+		color: yellow;
+		background-color:#1a0033;
+		}
+nav     {  
+		background-image: url("nght.jpg");
+		background-position: center; 
+		}
+.navdiv  {
+		cursor: pointer;
+		}
+#maindiv{
+	    display:flex;
+		}	
+article {width: 80vw;
+		 background-color: #ffa366;
+		 
+		 background-position: center; 
+		}
+aside   {
+	     width: 20vw;background-image: url("nght.jpg");
+		 text-align: center;
+		 color: yellow;
+        }
+.himg   {		
+		width: 8vw; margin:1vw;
+                border-radius: 3vw;
+		margin-bottom:0vw;
+}
+.artimg {
+         width:14vw;  margin:0vw;
+         border-radius: 1vw 1vw 0vw 0vw;
+		}
+.artdiv{
+	     color:white;
+		 font-size:1vw;
+		 text-align:center;
+		 margin:1vw;
+         width:14vw; 
+		 border-radius: 1vw;		 
+		 background-image: url("comp.jpg");
+}
+input   {
+	     width:10vw; height: 2vw;
+        }
+		.kartimg{
+			width:10vw; height: 10vw;
+		}
+.link{  
+	    text-decoration: underline;
+        cursor: pointer;
+        font-weight: normal;		
+}
+.logbt{   
+         margin:2vw;font-size:3vw;
+         background-color: #000099;
+        cursor: pointer;border-radius: 1vw;
+        opacity: 0.7;
+}
+#logdiv{
+	     color:red;
+		 font-size: 2vw;
+	   display: flex;
+		justify-content:space-around;
+		flex-wrap:wrap;
+       }
+#basketimg{
+	cursor: pointer;
+}
+#basketimg1{
+     cursor: pointer; 
+     width: 8vw;
+     border-right: 2vw;
+}

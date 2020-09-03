@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style type="text/css">
+    .errors{color:red;}
+    </style>
+<title>Create customer</title>
+
+
+</head>
+<body><div class="container">
+		<br>
+		<a th:href= "@{/store/products?category=Svi+proizvodi&korpa=&total=0}" class="btn btn-primarbtn btn-outline-success btn-lg">Back to store</a>
+			    <br><br>	
+		<div class="row">
+				<div class="col-6">
+				<h2>Create new:</h2>
+						<form id="usform" action="#" th:action="@{/store/showBill}"
+										 th:object="${theCustomer}" method="POST">
+								<input id ="usid" type="hidden" th:field="*{id}">	
+								<input type="hidden" th:field="*{korpa}">
+								
+								<div class="row">				 
+								<input type="text" th:field="*{firstName}" placeholder="First name" class="form-control mb-4 col-4">	 
+								<p class="errors" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />		
+								</div>
+								
+								<div class="row">	 
+								<input type="text" th:field="*{lastName}" class="form-control mb-4 col-4" placeholder="Last name"> 
+								<label class="errors" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />	
+								</div>
+								
+								<div class="row">
+								<input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="email">
+								<label class="errors" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+								</div>
+								
+								<div class="row">	
+								<input type="text" th:field="*{homeAdress}" class="form-control mb-4 col-4" placeholder="Adress">
+								<label class="errors" th:if="${#fields.hasErrors('homeAdress')}" th:errors="*{homeAdress}" /></label>
+								</div>
+								
+								<div class="row">
+								<input type="text" th:field="*{homePlace}" class="form-control mb-4 col-4" placeholder="Place">
+								<label class="errors" th:if="${#fields.hasErrors('homePlace')}" th:errors="*{homePlace}" />	
+								</div>
+								
+								<div class="row">
+								<input type="text" th:field="*{phoneNumber}" class="form-control mb-4 col-4" placeholder="Phone number">
+								<label class="errors" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" />
+								</label>
+								</div>
+								
+								<div class="row">
+								<input type="text" th:field="*{password}" class="form-control mb-4 col-4" placeholder="Password">
+								<label class="errors" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+								</div>		
+								<button type="submit" class="btn btn-info col-2"><b>Submit</b></button>		
+				
+		      			</form>				
+				</div>
+				<div class="col-6">
+					 <h2>or LOG IN:</h2>
+				<form action="#" th:action="@{/store/checkUser}"
+						 th:object="${theCustomer}" method="POST">
+				<input type="hidden" th:field="*{id}">
+					
+				<input type="hidden" th:field="*{korpa}">		 
+						 
+				<input type="hidden" th:field="*{firstName}" placeholder="First name">		 
+						 
+				<input type="hidden" th:field="*{lastName}" class="form-control mb-4 col-4" placeholder="Last name">
+		
+				<input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="email">
+				
+				<input type="hidden" th:field="*{homeAdress}" class="form-control mb-4 col-4" placeholder="Adress">
+				
+				<input type="hidden" th:field="*{homePlace}" class="form-control mb-4 col-4" placeholder="Place">
+				
+				<input type="hidden" th:field="*{phoneNumber}" class="form-control mb-4 col-4" placeholder="Phone number">
+				
+				<input type="password" th:field="*{password}" class="form-control mb-4 col-4" placeholder="Password">	
+				
+				<button type="submit" class="btn btn-info col-2"><b>Log in</b></button>			
+				<h6 style="color:red;" th:text="${message}" />		
+				
+		      </form>
+				</div>	
+			</div>
+		</div>
+		<script type="text/javascript">
+							var id = document.getElementById("usid").getAttribute("value");
+							if(id!=0)document.getElementById("usform").submit();
+		</script>	
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

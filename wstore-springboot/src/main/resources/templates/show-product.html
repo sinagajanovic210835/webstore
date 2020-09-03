@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Show product</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    </head>
+    <body>
+    	    
+		<div class="container">		
+		
+			<div class="row">
+				<div class="col-2" style="text-align:center;"><br><br>
+			    	<a th:href= "@{/store/products(category=${category},korpa=${korpa},total=${total})}" class="btn btn-primarbtn btn-outline-success btn-lg">Back to store</a>
+			    </div>
+				  
+					
+			    <div  class="col-9"><br><b></b>
+			    	<h2 th:text="${product.productName}" />
+			    </div>
+			     <div class="col-1" style="text-align:right;"><br>
+						<a th:href="@{/store/showCart(korpa=${korpa}, total=${total}, category=${category})}">
+						<img th:src = "@{'/'+${basketimg}}" alt = "image" id = 'basketimg1' style="width:5vw; height:5vw;"></a>
+				</div>	
+						
+			</div>
+			
+<div style="display:flex; justify-content:space arround; flex-wrap:wrap; width:100vw;">
+		 
+		<div style=" width:20vw;  margin-right:5vw;
+								  text-align:center;																	
+        						  background-color:white;">
+		
+			
+			<img th:src = "${product.pictureUrl}" alt = 'image' style="width:30vw; 
+																		margin:2vw;
+         																border-radius: 5vw;"
+         																onmouseover="bigImg(this)" onmouseout="normImg(this)">			
+			 
+			 <h2 th:text="${product.price}" style="font-size:3vw;"/><hr>
+			 
+			 <a th:href = "@{/store/addProductIntoBill(productId=${product.id}, korpa=${korpa},total= ${total},category=${category})}">			 
+			 <input type='image' th:src="@{'/add.png'}" class='addcart' alt = 'dodaj u korpu' style="width:10vw;" /></a><hr>; 
+        </div>
+        
+        <div style=" width:20vw;  margin:10vw;
+								  text-align:justify;	        						  
+         						  background-color:white;">
+         						  
+       		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+       
+      		 </p>
+		</div>
+		
+</div>	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+   		
+   	</body>
+</html>
+

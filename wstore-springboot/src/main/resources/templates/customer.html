@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<title>Customer page</title>
+</head>
+<body>
+				<div class="container">
+						<h3>Customer page</h3><hr>
+						
+						<a th:href="@{/manager}">Back to home page</a><hr>				
+						
+						<a th:href="@{/manager/customer/showCustomerBills(customerId=0)}" class="btn btn-primary btn-sm mb-3"><b>SHOW ALL BILLS</b></a>
+						
+						<a th:href="@{/manager/customer/showCustomerBills(customerId=-1)}" class="btn btn-primary btn-sm mb-3"><b>SHOW UNPAID BILLS</b></a>
+						
+						<table class="table table-bordered table-striped table-dark">
+							
+							<thead class="thead-dark">
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Email</th>
+									<th>Adress</th>
+									<th>Place</th>
+									<th>Phone number</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							
+							<tbody>						
+								<tr th:each="tempCustomer : ${customers}">								
+									<td th:text="${tempCustomer.firstName}" />		
+									<td th:text="${tempCustomer.lastName}" />
+									<td th:text="${tempCustomer.email}" />			
+									<td th:text="${tempCustomer.homeAdress}" />
+									<td th:text="${tempCustomer.homePlace}" />
+									<td th:text="${tempCustomer.phoneNumber}" />								
+									<td><a th:href="@{/manager/customer/showCustomerBills(customerId=${tempCustomer.id})}" class="btn btn-info btn-sm" ><b>Bills</b></a>&emsp;
+											<a th:href="@{/manager/customer/updateCustomer(customerId=${tempCustomer.id})}" class="btn btn-success btn-sm" ><b>Update</b></a>&emsp;
+											<a th:href="@{/manager/customer/delete(customerId=${tempCustomer.id})}" class="btn btn-danger btn-sm" 
+											onclick="if (!(confirm('Are you sure you want to delete this Customer?'))) return false;"><b>Delete</b></a>
+									</td>
+								</tr>
+							</tbody>
+							
+						</table>
+				
+				</div>
+
+</body>
+</html>
